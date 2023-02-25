@@ -1,0 +1,480 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>CAB301 Algorithms and Complexity</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="preface.html">Preface</a></li><li class="chapter-item expanded "><a href=".week_1/preface.html"><strong aria-hidden="true">1.</strong> Week 1</a></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">1.1.</strong> Overview</div></li><li class="chapter-item expanded "><a href="week_1/1-2.html"><strong aria-hidden="true">1.2.</strong> Learning activities</a></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">1.2.1.</strong> Download and examine</div></li><li class="chapter-item expanded "><a href="week_1/1-2-2.html"><strong aria-hidden="true">1.2.2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="week_1/1-2-3.html"><strong aria-hidden="true">1.2.3.</strong> What is an algorithm</a></li><li class="chapter-item expanded "><a href="week_1/1-2-4.html"><strong aria-hidden="true">1.2.4.</strong> Pseudocode notations</a></li><li class="chapter-item expanded "><a href="week_1/1-2-5.html"><strong aria-hidden="true">1.2.5.</strong> Algorithm efficiency and algorithm analysis</a></li><li class="chapter-item expanded "><a href="week_1/1-2-6.html"><strong aria-hidden="true">1.2.6.</strong> Algorithm analysis - An example</a></li><li class="chapter-item expanded "><a href="week_1/1-2-7.html"><strong aria-hidden="true">1.2.7.</strong> Why do we need to worry about the efficiency of an algorithm?</a></li><li class="chapter-item expanded "><a href="week_1/1-2-8.html"><strong aria-hidden="true">1.2.8.</strong> The tower of Hanoi problem</a></li><li class="chapter-item expanded "><a href="week_1/1-2-9.html"><strong aria-hidden="true">1.2.9.</strong> The Tower of Hanoi - Code example</a></li><li class="chapter-item expanded "><a href="week_1/1-2-10.html"><strong aria-hidden="true">1.2.10.</strong> What are data structures</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.3.</strong> Workshop</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.4.</strong> After Workshop</div></li><li class="chapter-item expanded "><a href="week_1/module-references.html"><strong aria-hidden="true">1.5.</strong> References</a></li></ol></li><li class="chapter-item expanded "><a href=".week_2/preface.html"><strong aria-hidden="true">2.</strong> Week 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="week_2/module-references.html"><strong aria-hidden="true">2.1.</strong> References</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">CAB301 Algorithms and Complexity</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="cab301-study-guide--2023-semester-1"><a class="header" href="#cab301-study-guide--2023-semester-1">CAB301 Study Guide | 2023 Semester 1</a></h1>
+<p>Dr Maolin Tang | Notes for CAB301 at the Queensland University of Technology</p>
+<h2 id="unit-description"><a class="header" href="#unit-description">Unit Description</a></h2>
+<h2 id="disclaimer"><a class="header" href="#disclaimer">Disclaimer</a></h2>
+<p>Everything written here is based off the QUT course content. However, there are at times parts of text that are taken from the QUT slides and most of the examples are directly from the course slides (these are referenced when done). This content is designed only for those currently studying an IT degree at QUT, do not share these resources with anyone outside of this community.</p>
+<p>If any member of the QUT staff or a representative of such finds any issue with these guides please contact me at jeynesbrook@gmail.com and I will take these down without an argument. The last thing I want to do is cause any issues or damages to the QUT name or QUT resources. I am simply just trying to help students out with presenting the content in an easy to digest manor.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="disclaimer-1"><a class="header" href="#disclaimer-1">Disclaimer</a></h2>
+<p>All references used within this module can be found within <a href=".week_1/../week_1/module-references.html">References</a>.</p>
+<p>The quizzes used within this module are taken directly from the QUT slides, I do not claim 
+them as my own work unless directly specified under the quiz.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="module-12"><a class="header" href="#module-12">Module 1.2</a></h1>
+<h2 id="table-of-contents"><a class="header" href="#table-of-contents">Table of Contents</a></h2>
+<ul>
+<li><a href="week_1/./1-2-2.html">1.2.2: Introduction</a></li>
+<li><a href="week_1/./1-2-3.html">1.2.3: What is an algorithm?</a></li>
+<li><a href="week_1/./1-2-4.html">1.2.4: Pseudocode notations</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-an-algorithm"><a class="header" href="#what-is-an-algorithm">What is an algorithm?</a></h1>
+<h2 id="what-is-an-algorithm-1"><a class="header" href="#what-is-an-algorithm-1">What is an algorithm?</a></h2>
+<p>An algorithm is a sequence of instructions which can be followed to solve some
+computational problem. Due to algorithms being independent of a programming language,
+they can typically be implemented into any.</p>
+<h2 id="pseudocode"><a class="header" href="#pseudocode">Pseudocode</a></h2>
+<p>Pseudocode is a way of writing the steps of an algorithm out in plain text without 
+getting stuck by a specific programming language syntax.</p>
+<p>Sometimes within pseudocode, we informally describe 'obvious' actions. For example,
+within the SelectionSort algorithm, we might just use the term 'swap' to describe
+the action.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pseudocode-notations"><a class="header" href="#pseudocode-notations">Pseudocode notations</a></h1>
+<div class="table-wrapper"><table><thead><tr><th>Variables</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>\(v \), \(w \), ...</td><td>Variable names</td></tr>
+<tr><td>\(E \), \(F \), ...</td><td>Expressions</td></tr>
+<tr><td>\(B \), \(C \), ...</td><td>Boolean values</td></tr>
+<tr><td>\(N \), \(M \), ...</td><td>Integer-valued expressions</td></tr>
+<tr><td>\(S \), \(T \), ...</td><td>(Compound) program statements</td></tr>
+<tr><td>\(P \), \(Q \), ...</td><td>Procedure names</td></tr>
+<tr><td>\(x \), \(y \), ...</td><td>Parameter names</td></tr>
+<tr><td>3.1425926, 'c', true</td><td>Primitive types</td></tr>
+<tr><td>\(A[i] \)</td><td>Arrays / Vectors</td></tr>
+<tr><td>\(\{4, ..., 10\} \)</td><td>Sets</td></tr>
+</tbody></table>
+</div><br />
+<div class="table-wrapper"><table><thead><tr><th>Statements</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>\((2v) + x \)</td><td>Expressions</td></tr>
+<tr><td>\(P(x, y, ...) \)</td><td>Parameterised procedure declarations</td></tr>
+<tr><td>\(P(E, F, ...) \)</td><td>Procedure calls</td></tr>
+<tr><td>\(v \leftarrow E \)</td><td>Assignment</td></tr>
+<tr><td>\(S \hspace{0.2em} T \) or \(S; T \)</td><td>Sequential composition</td></tr>
+<tr><td>return \(E \)</td><td>Return statements</td></tr>
+</tbody></table>
+</div><br />
+<div class="table-wrapper"><table><thead><tr><th>Conditionals</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>if \(B \hspace{0.2em} S \) else \(T \)</td><td>Choice</td></tr>
+<tr><td>if \(B \hspace{0.2em} S \)</td><td>If-then statements</td></tr>
+</tbody></table>
+</div><br />
+<div class="table-wrapper"><table><thead><tr><th>Iterations</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>while \(B \) do \(S \)</td><td>Iteration</td></tr>
+<tr><td>for \(v \leftarrow N \) to \(M \)  do \(S \)</td><td>Iteration</td></tr>
+<tr><td>repeat \(S \) until \(B \)</td><td>Iteration (post-tested)</td></tr>
+</tbody></table>
+</div>
+<h2 id="pseudocode-example"><a class="header" href="#pseudocode-example">Pseudocode Example</a></h2>
+<pre><code>ALGORITHM ArrayMax(A[0..n - 1])
+// Given an array A of length n &gt;= 1, 
+// return the value of the largest number in A
+max &lt;- A[0]
+for i &lt;- 1 to n - 1 do
+    if A[i] &gt; max
+        max &lt;- A[i]
+return max
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="algorithm-efficiency-and-algorithm-analysis"><a class="header" href="#algorithm-efficiency-and-algorithm-analysis">Algorithm efficiency and algorithm analysis</a></h1>
+<h2 id="algorithm-efficency"><a class="header" href="#algorithm-efficency">Algorithm efficency</a></h2>
+<p>Algorithm efficiency is generally represented as a mathematical function which
+describes the resource requirements of the algorithm. These requirements describe
+the amount of data each algorithm must process before it finishes.</p>
+<p>There are two main measures used to describe an algorithms efficiency:</p>
+<ol>
+<li><strong>Time efficiency</strong>: A mathematical function which describes the amount of time
+an algorithm will take to finish in relation to its input.</li>
+<li><strong>Space efficiency</strong>: A mathematical function which describes the amount of
+space, or storage, an algorithm must take to finish in relation to its input.</li>
+</ol>
+<h2 id="algorithm-analysis"><a class="header" href="#algorithm-analysis">Algorithm analysis</a></h2>
+<p>Algorithm analysis is the process of determining how efficient an algorithm is.</p>
+<p>Algorithm analysis is done independent of a language or machine. This is because
+the efficiency of an algorithm will change depending on the language implementation
+and processing power of the machine.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="algorithm-analysis---an-example"><a class="header" href="#algorithm-analysis---an-example">Algorithm analysis - An example</a></h1>
+<p>Let's take a look at an algorithm we've seen previously.</p>
+<pre><code>ALGORITHM ArrayMax(A[0..n - 1])
+// Given an array A of length n &gt;= 1, 
+// return the value of the largest number in A
+max &lt;- A[0]              // c1
+for i &lt;- 1 to n - 1 do
+    if A[i] &gt; max        // c2
+        max &lt;- A[i]      // c3
+return max               // c4
+</code></pre>
+<p>In a worst case scenario, the computational time for this algorithm can be
+appoximated using the following mathematical function.</p>
+<p>\[
+T(n) = c1 + (c2+c3)(n-1)+c4
+\]</p>
+<p>where \(c1, ..., c4 \) are machine dependent, they will always have
+the same computation time.</p>
+<p>Let's imagine we run this on some machine and time how long it takes to compute
+each expression.</p>
+<ul>
+<li>c1 = 3 micro-seconds</li>
+<li>c2 = 2 micro-seconds</li>
+<li>c3 = 3 micro-seconds</li>
+<li>c4 = 1 micro-seconds</li>
+</ul>
+<p>\[
+T(n) = 3 + (2+3)(n-1)+1 = 5n - 1
+\]</p>
+<p>We could then say:</p>
+<ul>
+<li>When \(n = 10\), \(T(10) = 5*10-1 = 49 \) micro-seconds</li>
+<li>When \(n = 100\), \(T(100) = 5*100-1 = 499 \) micro-seconds</li>
+<li>When \(n = 1000000\), \(T(1000000) = 5*1000000-1 = 4999999 \) micro-seconds</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="why-do-we-need-to-worry-about-the-efficiency-of-an-algorithm"><a class="header" href="#why-do-we-need-to-worry-about-the-efficiency-of-an-algorithm">Why do we need to worry about the efficiency of an algorithm?</a></h1>
+<p>If computers are fast and memory cheap, why is there a need to worry about
+efficiency?</p>
+<p>Consider an algorithm which can solve some problem of size \(n \) by processing
+\( 2^n \) cases, \(T(n) = 2^2 \). We now want to implement this on some computer
+which takes 0.000000005 seconds per case.</p>
+<div class="table-wrapper"><table><thead><tr><th>Problem size</th><th>Solution time</th></tr></thead><tbody>
+<tr><td>10</td><td>5.1 micro-seconds</td></tr>
+<tr><td>20</td><td>5.2 milli-seconds</td></tr>
+<tr><td>30</td><td>5.4 seconds</td></tr>
+<tr><td>40</td><td>1.5 hours</td></tr>
+<tr><td>50</td><td>9.3 weeks</td></tr>
+<tr><td>60</td><td>183 years</td></tr>
+<tr><td>70</td><td>1872 centuries</td></tr>
+<tr><td>80</td><td>192 million years</td></tr>
+</tbody></table>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="the-tower-of-hanoi-problem"><a class="header" href="#the-tower-of-hanoi-problem">The tower of Hanoi problem</a></h1>
+<h2 id="how-does-the-tower-of-hanoi-problem-work"><a class="header" href="#how-does-the-tower-of-hanoi-problem-work">How does the tower of Hanoi problem work?</a></h2>
+<p>Given \(n \) number of rods, and an initial rod stacked with disc incrementally 
+getting smaller from bottom to top. The objective is to transfer the entire 
+tower from one rod to another under the constraint that:</p>
+<ol>
+<li>You can only move one disc at a time</li>
+<li>You cannot place a disc on one smaller than itself</li>
+<li>After any move, all discs must be on a rod</li>
+</ol>
+<p><img src="week_1/../assets/tower-of-hanoi.png" alt="Tower of Hanoi" /><br />
+<strong>Figure: Tower of Hanoi</strong></p>
+<h2 id="solving-the-tower-of-hanoi-problem"><a class="header" href="#solving-the-tower-of-hanoi-problem">Solving the tower of Hanoi problem</a></h2>
+<p>It's difficult to design an iterative algorithm to solve such a problem. This is
+where the power of recursive algorithms come into play.</p>
+<pre><code>ALGORITHM TowerOfHanoi(n, a, b, c)
+// Find a solution to the problem of moving n disks from rod a to rod c 
+// using b as a temporary rod without violating the rules
+//
+// variables:
+//   - n: number of disks
+//   - a: starting rod
+//   - b: temporary rod
+//   - c: end rod
+
+if n &gt; 0
+    towerOfHanoi(n - 1, a, c, b)
+    move top disk from a to c
+    towerOfHanoi(n - 1, b, a, c)
+</code></pre>
+<p><img src="week_1/../assets/tower-of-hanoi-solved.gif" alt="Tower of Hanoi solution" /><br />
+<strong>Figure: Tower of Hanoi solution</strong></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-tower-of-hanoi---code-example"><a class="header" href="#the-tower-of-hanoi---code-example">The Tower of Hanoi - Code example</a></h1>
+<p>Here is an implementation of the algorithm to solve the Tower of Hanoi 
+problem in C#</p>
+<pre><code class="language-csharp">using System;
+using System.Diagnostics;
+
+class Program {
+    public enum Rod {
+        Source,
+        Intermediate,
+        Destination
+    }
+
+    public static void Main() {
+        Stopwatch sw = new Stopwatch();
+
+        Console.Write(&quot;Number of disks: &quot;);
+        int diskCount = Convert.ToInt32(Console.ReadLine());
+
+        sw.Start();
+        TowerOfHanoi(diskCount, Rod.Source, Rod.Intermediate, Rod.Destination);
+        sw.Stop();
+
+        Console.WriteLine($&quot;Computation time = {sw.ElapsedMilliseconds} milli-seconds&quot;);
+    }
+
+    public static void TowerOfHanoi(int n, Rod source, Rod intermediate, Rod destination) {
+        if (n &gt; 0) {
+            TowerOfHanoi(n - 1, source, destination, intermediate);
+            Console.WriteLine($&quot;Move the top disk from {source} to {destination}&quot;);
+            TowerOfHanoi(n - 1, intermediate, source, destination);
+        }
+    }
+}
+</code></pre>
+<p>All code examples shown in the study guide will be in C# as this is the language 
+taught in the unit. However, occasionally, you will see examples of Rust code 
+along with C# code. </p>
+<p>The engine that runs and formats these study guides only has support for runnable 
+Rust code. Therefore, if I want to have runnable code, it needs to be in Rust.</p>
+<p>Anytime there is Rust code, you can safely ignore it and just hit the run button
+to see the output as it will emulate (for the most part) what the C# code would output.</p>
+<p>Be aware however, that it is very easy to timeout the program if the algorithm 
+takes too long to run due to the constraints of the books engine.</p>
+<pre><pre class="playground"><code class="language-rust editable">use std::fmt;
+
+enum Rod {
+    Source,
+    Intermediate,
+    Destination
+}
+
+impl fmt::Display for Rod {
+    fn fmt(&amp;self, f: &amp;mut fmt::Formatter&lt;'_&gt;) -&gt; fmt::Result {
+        match self {
+            Self::Source =&gt; write!(f, &quot;Source&quot;),
+            Self::Intermediate =&gt; write!(f, &quot;Intermediate&quot;),
+            Self::Destination =&gt; write!(f, &quot;Destination&quot;),
+        }
+        
+    }
+}
+
+fn main() {
+    // Change this value here
+    let disk_count = 3;
+
+    TowerOfHanoi(disk_count, &amp;Rod::Source, &amp;Rod::Intermediate, &amp;Rod::Destination);
+}
+
+fn TowerOfHanoi(n: usize, source: &amp;Rod, intermediate: &amp;Rod, destination: &amp;Rod) {
+    if n &gt; 0 {
+        TowerOfHanoi(n - 1, source, destination, intermediate);
+        println!(&quot;Move the top disk from {} to {}&quot;, source.to_string(), destination.to_string());
+        TowerOfHanoi(n - 1, intermediate, source, destination);
+    }
+}</code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="what-are-data-structures"><a class="header" href="#what-are-data-structures">What are data Structures?</a></h1>
+<p>In computer science, there are many ways to store and organise collections of
+data, we call these collections data structures.</p>
+<p>There are many data structures such as:</p>
+<ul>
+<li>Arrays</li>
+<li>Linked lists</li>
+<li>Binary trees</li>
+<li>Trees</li>
+<li>Graphs</li>
+<li>Hash tables</li>
+<li>etc...</li>
+</ul>
+<p>No single data structure will work for all purposes, hence the need for many.
+This is why it's important that you can recognise the strenghs, weaknesses, 
+limitations, and use cases for each data strcture.</p>
+<p>Throughout the course, we will delve into different algorithms that will require
+the use of many different data structures. Overtime you will start to recognise 
+and learn when to use each one.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="module-references"><a class="header" href="#module-references">Module References</a></h2>
+<p>QUT lectures &amp; slides</p>
+<p>Turing Machines | Brilliant Math &amp; Science Wiki. (n.d.). Brilliant.org. https://brilliant.org/wiki/turing-machines/</p>
+<p>Lambda Calculus | Brilliant Math &amp; Science Wiki. (n.d.). Brilliant.org. https://brilliant.org/wiki/lambda-calculus/</p>
+<p>Currying - HaskellWiki. (n.d.). Wiki.haskell.org. https://wiki.haskell.org/Currying</p>
+<p>Von Neumann architecture - Architecture - Eduqas - GCSE Computer Science Revision - Eduqas. (n.d.). BBC Bitesize. https://www.bbc.co.uk/bitesize/guides/zhppfcw/revision/3</p>
+<p>What is Von Neumann Architecture? - Definition from Techopedia. (2019). Techopedia.com. https://www.techopedia.com/definition/32480/von-neumann-architecture</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="disclaimer-2"><a class="header" href="#disclaimer-2">Disclaimer</a></h2>
+<p>All references used within this module can be found within <a href=".week_2/../week_2/module-references.html">References</a>.</p>
+<p>The quizzes used within this module are taken directly from the QUT slides, I do not claim 
+them as my own work unless directly specified under the quiz.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="references"><a class="header" href="#references">References</a></h1>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="ace.js"></script>
+        <script src="editor.js"></script>
+        <script src="mode-rust.js"></script>
+        <script src="theme-dawn.js"></script>
+        <script src="theme-tomorrow_night.js"></script>
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

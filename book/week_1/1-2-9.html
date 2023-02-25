@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The Tower of Hanoi - Code example - CAB301 Algorithms and Complexity</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../preface.html">Preface</a></li><li class="chapter-item expanded "><a href="../.week_1/preface.html"><strong aria-hidden="true">1.</strong> Week 1</a></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">1.1.</strong> Overview</div></li><li class="chapter-item expanded "><a href="../week_1/1-2.html"><strong aria-hidden="true">1.2.</strong> Learning activities</a></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">1.2.1.</strong> Download and examine</div></li><li class="chapter-item expanded "><a href="../week_1/1-2-2.html"><strong aria-hidden="true">1.2.2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../week_1/1-2-3.html"><strong aria-hidden="true">1.2.3.</strong> What is an algorithm</a></li><li class="chapter-item expanded "><a href="../week_1/1-2-4.html"><strong aria-hidden="true">1.2.4.</strong> Pseudocode notations</a></li><li class="chapter-item expanded "><a href="../week_1/1-2-5.html"><strong aria-hidden="true">1.2.5.</strong> Algorithm efficiency and algorithm analysis</a></li><li class="chapter-item expanded "><a href="../week_1/1-2-6.html"><strong aria-hidden="true">1.2.6.</strong> Algorithm analysis - An example</a></li><li class="chapter-item expanded "><a href="../week_1/1-2-7.html"><strong aria-hidden="true">1.2.7.</strong> Why do we need to worry about the efficiency of an algorithm?</a></li><li class="chapter-item expanded "><a href="../week_1/1-2-8.html"><strong aria-hidden="true">1.2.8.</strong> The tower of Hanoi problem</a></li><li class="chapter-item expanded "><a href="../week_1/1-2-9.html" class="active"><strong aria-hidden="true">1.2.9.</strong> The Tower of Hanoi - Code example</a></li><li class="chapter-item expanded "><a href="../week_1/1-2-10.html"><strong aria-hidden="true">1.2.10.</strong> What are data structures</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.3.</strong> Workshop</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.4.</strong> After Workshop</div></li><li class="chapter-item expanded "><a href="../week_1/module-references.html"><strong aria-hidden="true">1.5.</strong> References</a></li></ol></li><li class="chapter-item expanded "><a href="../.week_2/preface.html"><strong aria-hidden="true">2.</strong> Week 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../week_2/module-references.html"><strong aria-hidden="true">2.1.</strong> References</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">CAB301 Algorithms and Complexity</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="the-tower-of-hanoi---code-example"><a class="header" href="#the-tower-of-hanoi---code-example">The Tower of Hanoi - Code example</a></h1>
+<p>Here is an implementation of the algorithm to solve the Tower of Hanoi 
+problem in C#</p>
+<pre><code class="language-csharp">using System;
+using System.Diagnostics;
+
+class Program {
+    public enum Rod {
+        Source,
+        Intermediate,
+        Destination
+    }
+
+    public static void Main() {
+        Stopwatch sw = new Stopwatch();
+
+        Console.Write(&quot;Number of disks: &quot;);
+        int diskCount = Convert.ToInt32(Console.ReadLine());
+
+        sw.Start();
+        TowerOfHanoi(diskCount, Rod.Source, Rod.Intermediate, Rod.Destination);
+        sw.Stop();
+
+        Console.WriteLine($&quot;Computation time = {sw.ElapsedMilliseconds} milli-seconds&quot;);
+    }
+
+    public static void TowerOfHanoi(int n, Rod source, Rod intermediate, Rod destination) {
+        if (n &gt; 0) {
+            TowerOfHanoi(n - 1, source, destination, intermediate);
+            Console.WriteLine($&quot;Move the top disk from {source} to {destination}&quot;);
+            TowerOfHanoi(n - 1, intermediate, source, destination);
+        }
+    }
+}
+</code></pre>
+<p>All code examples shown in the study guide will be in C# as this is the language 
+taught in the unit. However, occasionally, you will see examples of Rust code 
+along with C# code. </p>
+<p>The engine that runs and formats these study guides only has support for runnable 
+Rust code. Therefore, if I want to have runnable code, it needs to be in Rust.</p>
+<p>Anytime there is Rust code, you can safely ignore it and just hit the run button
+to see the output as it will emulate (for the most part) what the C# code would output.</p>
+<p>Be aware however, that it is very easy to timeout the program if the algorithm 
+takes too long to run due to the constraints of the books engine.</p>
+<pre><pre class="playground"><code class="language-rust editable">use std::fmt;
+
+enum Rod {
+    Source,
+    Intermediate,
+    Destination
+}
+
+impl fmt::Display for Rod {
+    fn fmt(&amp;self, f: &amp;mut fmt::Formatter&lt;'_&gt;) -&gt; fmt::Result {
+        match self {
+            Self::Source =&gt; write!(f, &quot;Source&quot;),
+            Self::Intermediate =&gt; write!(f, &quot;Intermediate&quot;),
+            Self::Destination =&gt; write!(f, &quot;Destination&quot;),
+        }
+        
+    }
+}
+
+fn main() {
+    // Change this value here
+    let disk_count = 3;
+
+    TowerOfHanoi(disk_count, &amp;Rod::Source, &amp;Rod::Intermediate, &amp;Rod::Destination);
+}
+
+fn TowerOfHanoi(n: usize, source: &amp;Rod, intermediate: &amp;Rod, destination: &amp;Rod) {
+    if n &gt; 0 {
+        TowerOfHanoi(n - 1, source, destination, intermediate);
+        println!(&quot;Move the top disk from {} to {}&quot;, source.to_string(), destination.to_string());
+        TowerOfHanoi(n - 1, intermediate, source, destination);
+    }
+}</code></pre></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../week_1/1-2-8.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../week_1/1-2-10.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../week_1/1-2-8.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../week_1/1-2-10.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../ace.js"></script>
+        <script src="../editor.js"></script>
+        <script src="../mode-rust.js"></script>
+        <script src="../theme-dawn.js"></script>
+        <script src="../theme-tomorrow_night.js"></script>
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
