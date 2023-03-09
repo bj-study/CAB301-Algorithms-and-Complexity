@@ -7,9 +7,12 @@ title = "CAB301 Algorithms and Complexity"
 
 [output.html]
 mathjax-support = true
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
 
 [output.html.playground]
 editable = true
 
-# book.toml
-# [preprocessor.quiz]
+[preprocessor]
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
